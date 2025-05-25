@@ -1,12 +1,13 @@
 import numpy as np
 from numpy.typing import NDArray
 from typing import Tuple, Any, List
+import os
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import matplotlib.font_manager as fm
 
 # フォントの明示的指定
-font_path = "~/Library/Fonts/VL-Gothic-Regular.ttf"
+font_path = os.path.expanduser("~/Library/Fonts/VL-Gothic-Regular.ttf")
 jp_font = fm.FontProperties(fname=font_path)
 font_name = jp_font.get_name()
 
