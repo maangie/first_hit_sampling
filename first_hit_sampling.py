@@ -9,6 +9,7 @@ import matplotlib.font_manager as fm
 # フォントの明示的指定
 font_path = os.path.expanduser("~/Library/Fonts/VL-Gothic-Regular.ttf")
 jp_font = fm.FontProperties(fname=font_path)
+
 def pop_random(arr_np: NDArray[np.int_]) -> Tuple[NDArray[np.int_], int]:
   """
   arr_np からランダムに要素を削除し、
@@ -41,6 +42,7 @@ def pop_random(arr_np: NDArray[np.int_]) -> Tuple[NDArray[np.int_], int]:
     # np.delete は新しい配列を返すけん上書き
     new_arr = np.delete(arr_np, idx)
     return new_arr, val
+
 def create_random_one_array(length: int = 1000, dtype: Any = int) -> NDArray[Any]:
   """
   指定した長さのゼロ配列を作って、その中のランダムな1箇所を1にする関数。
@@ -63,6 +65,7 @@ def create_random_one_array(length: int = 1000, dtype: Any = int) -> NDArray[Any
   idx = np.random.choice(arr.size, size=1, replace=False)[0]
   arr[idx] = 1
   return arr
+
 def draw_until_hit(arr_np: NDArray[np.int_]) -> int:
   """
   arr_np からランダムに要素を取り出し（pop_random を使って捨てつつ）、
@@ -95,6 +98,7 @@ def draw_until_hit(arr_np: NDArray[np.int_]) -> int:
     if current.size == 0:
       raise IndexError("配列が空になったばい…あたりが見つからんばい。")
   return count
+
 def simulate_hit_histogram(trials: int = 10000, length: int = 1000) -> None:
   """
   draw_until_hit() を使って「あたりが出るまでに何回引いたか」を
@@ -124,5 +128,6 @@ def simulate_hit_histogram(trials: int = 10000, length: int = 1000) -> None:
   plt.title(f"{trials} 回のシミュレーション結果ヒストグラム", fontproperties=jp_font)
   plt.tight_layout()
   plt.show()
+
 if __name__ == "__main__":
   simulate_hit_histogram(trials=10000, length=1000)
